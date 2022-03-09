@@ -8,12 +8,12 @@ function Home() {
     const [data, setData] = useState([]);
     let imageUrl = "https://image.tmdb.org/t/p/w500"
 
-    data.slice(Math.max(data.length - 10, 0))
   
     useEffect(()=> 
     {
         axios.get('https://api.themoviedb.org/3/movie/popular?api_key=c89646cb9c2f9f7a6144c074fff0e9c7&language=en-US&page=1')
-        .then(res => setData(res.data.results.slice(Math.max(res.data.results.length - 10, 0))))
+        .then(res => setData(res.data.results.slice(0, 10)))
+        // si c'est 10 dernier ---> setData(res.data.results.slice(Math.max(res.data.results.length - 10, 0)))
     },[])
   
   

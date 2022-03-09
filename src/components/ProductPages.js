@@ -13,13 +13,13 @@ function ProductPages() {
 
     let imageUrl = "https://image.tmdb.org/t/p/w500";
 
-  
+    
     useEffect(()=> 
     {
         axios.get('https://api.themoviedb.org/3/discover/movie?api_key=c89646cb9c2f9f7a6144c074fff0e9c7&language=en-US&sort_by=release_date.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate&fbclid=IwAR0HMJDNFy2dBN6ujR7w3p4F5aR6Wg781RiacrTg6sA-8XfQGZJnRx-7gGc')
-        .then(res => setData(res.data.results.slice(Math.max(res.data.results.length - 20, 0))))
+        .then(res => setData(res.data.results))
         axios.get('https://api.themoviedb.org/3/discover/movie?api_key=c89646cb9c2f9f7a6144c074fff0e9c7&language=en-US&sort_by=release_date.desc&include_adult=false&include_video=false&page=2&with_watch_monetization_types=flatrate&fbclid=IwAR0HMJDNFy2dBN6ujR7w3p4F5aR6Wg781RiacrTg6sA-8XfQGZJnRx-7gGc')
-        .then(res => setData2(res.data.results.slice(Math.max(res.data.results.length - 10, 0))))
+        .then(res => setData2(res.data.results.slice(0, 10)))
     },[])
 
     const isMobileScreen = useMediaQuery({ query: '(max-width: 750px)' })
